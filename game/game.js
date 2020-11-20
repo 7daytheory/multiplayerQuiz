@@ -19,7 +19,7 @@ let questions = [
         answer: "1"
     },
     {
-        question: "Question number 2 what is the answer?",
+        question: "This Question length is longer . Question number 2 what is the answer?",
         choice1: "Answer One",
         choice2: "Answer two",
         choice3: "Answer three",
@@ -27,7 +27,7 @@ let questions = [
         answer: "2"
     },
     {
-        question: "Question number 3 what is the answer?",
+        question: "Short - Question number 3 what is the answer?",
         choice1: "Answer One",
         choice2: "Answer two",
         choice3: "Answer three",
@@ -35,7 +35,7 @@ let questions = [
         answer: "3"
     },
     {
-        question: "Question number 4 what is the answer?",
+        question: "Medium Question - Question number 4 what is the answer?",
         choice1: "Answer One",
         choice2: "Answer two",
         choice3: "Answer three",
