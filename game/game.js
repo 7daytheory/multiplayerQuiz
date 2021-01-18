@@ -1,5 +1,7 @@
 const question = document.querySelector("#question");
 const choices = Array.from(document.getElementsByClassName('choice-text'));
+const questionCounterText = document.querySelector("#questionCounter");
+const scoreText = document.querySelector("#score");
 
 console.log(choices);
 
@@ -85,7 +87,7 @@ let questions = [
 ];
 
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
+const MAX_QUESTIONS = 9;
 
 startGame = () => {
     questionCounter = 0;
@@ -101,6 +103,8 @@ getNewQuestion = () => {
         //Go to end Page
         return window.location.assign("end.html");
     }
+    questionCounter++;
+    questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
     questionCounter++;
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
@@ -125,9 +129,10 @@ choices.forEach(choice => {
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
 
-        let classToApply = 'incorrect';
-        if (selectedAnswer === currentQuestion.answer) {
-            classToApply = 'correct';
+        const classToApply = currentQuestion.answer ? "correct" : "incorrect";
+        
+        if(classToApply === "correct") {
+          incrementScore(CORRECT_BONUS);
         }
 
         // Turnary Syntax -> does same thing as above
@@ -141,5 +146,10 @@ choices.forEach(choice => {
         }, 1000);
     });
 });
+
+incrementScore = num => {
+  score += num;
+  scoreText.innerText = score;
+}
 
 startGame();
