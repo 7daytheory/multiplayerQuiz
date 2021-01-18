@@ -1,7 +1,8 @@
 const question = document.querySelector("#question");
 const choices = Array.from(document.getElementsByClassName('choice-text'));
-const questionCounterText = document.querySelector("#questionCounter");
+const progressText = document.querySelector("#progressText");
 const scoreText = document.querySelector("#score");
+const progressBarFull = document.querySelector(".progressBarFull");
 
 console.log(choices);
 
@@ -104,8 +105,12 @@ getNewQuestion = () => {
         return window.location.assign("end.html");
     }
     questionCounter++;
-    questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
-    questionCounter++;
+    progressText.innerText = `Question${questionCounter}/${MAX_QUESTIONS}`;
+    
+    //update the progress bar 
+    console.log(`${(questionCounter / MAX_QUESTIONS) * 100}%`);
+    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+    
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
     question.innerText = currentQuestion.question;
@@ -134,9 +139,6 @@ choices.forEach(choice => {
         if(classToApply === "correct") {
           incrementScore(CORRECT_BONUS);
         }
-
-        // Turnary Syntax -> does same thing as above
-        // const classToApply = selectedAnswer === currentQuestionQuestion.answer ? 'correct' : 'incorrect';
 
         selectedChoice.parentElement.classList.add(classToApply);
 
