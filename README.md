@@ -1,2 +1,2 @@
 # multiplayerQuiz
-Online Multiplayer Quiz Game with Vue.js and Socket.io
+Multiplayer Quiz game grabbing category of questions using a Rest API
